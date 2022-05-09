@@ -1,26 +1,54 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HeaderComponent/>
+  <SidebarComponent/>
+  <main id="l-content">
+    <router-view/>
+  </main>
+  <FooterComponent/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderComponent from "@/components/layouts/HeaderComponent";
+import FooterComponent from "@/components/layouts/FooterComponent";
+import SidebarComponent from "@/components/layouts/SidebarComponent";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+/* Importation =========================== */
+@import "assets/css/reset.min.css";
+
+/* Variables =========================== */
+@import "assets/css/variables.css";
+
+/* Globals =========================== */
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: var(--c-background);
+  color: var(--c-tertiary);
+}
+#l-content {
+  padding: 32px;
+}
+a {
+  display: block;
+  text-decoration: none;
+  color: var(--c-primary);
+
+  &:not([class]):hover {
+    text-decoration: underline;
+  }
+}
+li {
+  list-style: none;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--c-text);
 }
 </style>
