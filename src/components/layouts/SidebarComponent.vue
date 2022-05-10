@@ -8,15 +8,22 @@
     </div>
     <div class="optional-links">
       <ul>
-        <li><a href="#">Déconnexion</a></li>
+        <li>
+          <ButtonComponent url="/">Déconnexion</ButtonComponent>
+        </li>
       </ul>
     </div>
   </aside>
 </template>
 
 <script>
+import ButtonComponent from '@/components/ButtonComponent';
+
 export default {
-  name: "SidebarComponent"
+  name: "SidebarComponent",
+  components: {
+    ButtonComponent
+  }
 }
 </script>
 

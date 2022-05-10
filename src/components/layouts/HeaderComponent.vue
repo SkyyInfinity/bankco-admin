@@ -2,7 +2,9 @@
   <header id="l-header">
     <nav>
       <div class="logo">
-        <img src="@/assets/img/logo.png" alt="logo">
+        <router-link to="/">
+          <img src="@/assets/img/logo.png" alt="logo">
+        </router-link>
       </div>
       <ul>
         <li><a href="#">Mon compte</a></li>
