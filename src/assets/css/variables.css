@@ -5,19 +5,28 @@
 
 :root {
     /* Colors */
-    --c-primary: #00FFDD;
+    --c-primary: hsl(172, 100%, 50%);
     --c-primary-rgb: 0, 255, 221;
     --c-primary-shade: hsl(172, 100%, 40%);
-    --c-secondary: #0F224A;
-    --c-secondary-rgb: 15, 34, 74;
-    --c-secondary-shade: hsl(221, 66%, 7%);
+    --c-secondary: #1f2a40;
+    --c-secondary-rgb: 31, 42, 64;
+    --c-secondary-shade: hsl(220, 35%, 9%);
     --c-tertiary: #EFFFFD;
     --c-tertiary-rgb: 239, 255, 253;
     --c-tertiary-shade: hsl(173, 100%, 87%);
-    --c-border: #888;
+    --c-border: #000;
     --c-background: hsl(218, 58%, 13%);
     --c-text: #fff;
     --c-text-shade: #cdcdcd;
+    --c-text-alt: #000;
+
+    /* Animation */
+    --a-duration: 200ms;
+    --a-easing: ease-in;
+    --a-transition: var(--a-duration) var(--a-easing);
+
+    /* Sizes */
+    --s-sidebar: 300px;
 }
 
 

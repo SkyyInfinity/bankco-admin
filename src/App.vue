@@ -23,15 +23,16 @@ export default {
 
 <style lang="scss">
 /* Importation =========================== */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;300;400;500;700;800&display=swap');
 @import "assets/css/reset.min.css";
-
-/* Variables =========================== */
 @import "assets/css/variables.css";
 
 /* Globals =========================== */
 #app {
   background-color: var(--c-background);
   color: var(--c-tertiary);
+  font-size: 14px;
+  font-family: "Sora", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif;
 }
 #l-content {
   padding: 32px;

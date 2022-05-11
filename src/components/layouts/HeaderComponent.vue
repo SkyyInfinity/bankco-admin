@@ -22,7 +22,7 @@ export default {
 <style lang="scss" scoped>
   #l-header {
     padding: 32px;
-    background-color: var(--c-background);
+    background-color: var(--c-secondary);
     border-bottom: 1px solid var(--c-border);
 
     nav {
