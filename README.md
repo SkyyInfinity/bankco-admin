@@ -1,4 +1,4 @@
-# banco-admin
+# bancko-admin
 
 ## Project setup
 ```

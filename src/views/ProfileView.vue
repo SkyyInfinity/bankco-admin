@@ -1,13 +1,13 @@
 <template>
-  <div class="page about-page">
-    <h1>About page</h1>
+  <div class="page profile-page">
+    <h1>Profil</h1>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'AboutView',
+  name: 'ProfileView',
   components: {}
 }
 </script>
