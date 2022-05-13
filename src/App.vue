@@ -112,6 +112,22 @@ export default {
   }
 
   @media screen and (max-width: 768px) {
+    #app {
+      grid-auto-columns: 1fr;
+      grid-template-rows: max-content 1fr;
+      grid-template-areas: "header header" "content content" "footer footer";
+    }
+    #l-content {
+      padding: calc(32px + var(--s-header)) 32px;
+    }
+    h1 {
+      font-size: 24px !important;
+      width: 100%;
+    }
+    h2 {
+      font-size: 18px !important;
+      width: 100%;
+    }
     .field-groups {
       flex-direction: column;
     }

@@ -81,4 +81,9 @@ export default {
     flex-direction: column;
     gap: 16px;
   }
+  @media screen and (max-width: 768px) {
+    .clients-cards {
+      gap: 32px;
+    }
+  }
 </style>

@@ -169,4 +169,28 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    #l-sidebar {
+      padding: 16px 32px;
+      width: 100%;
+      height: max-content;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      .menu-links,
+      .optional-links {
+        ul {
+          display: flex;
+          flex-direction: row !important;
+          gap: 8px;
+        }
+      }
+      .menu-control {
+        display: none;
+      }
+    }
+  }
 </style>

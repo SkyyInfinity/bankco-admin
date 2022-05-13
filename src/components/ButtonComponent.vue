@@ -30,6 +30,7 @@ export default {
     cursor: pointer;
     box-shadow: none;
     outline: none;
+    border: none;
 
     //style
     padding: 8px 16px;

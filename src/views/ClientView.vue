@@ -4,6 +4,7 @@
     <div class="box-contents">
       <!--  Informations  -->
       <div class="box informations">
+        <h2>Informations</h2>
         <div class="info-list">
           <form id="client-infos" action="" method="post">
             <div class="field-groups">
@@ -28,8 +29,11 @@
       </div>
       <!--  Contact  -->
       <div class="box contact">
-        <a :href="`tel:${client.phone}`" class="tel btn-contact" >Appeler <i class="ri-phone-line"></i></a>
-        <a :href="`mailto:${client.email}`" class="mail btn-contact">Envoyer un message <i class="ri-mail-line"></i></a>
+        <h2>Contact</h2>
+        <div class="btns-contact">
+          <a :href="`tel:${client.phone}`" class="tel btn-contact" >Appeler <i class="ri-phone-line"></i></a>
+          <a :href="`mailto:${client.email}`" class="mail btn-contact">Envoyer un message <i class="ri-mail-line"></i></a>
+        </div>
       </div>
     </div>
   </div>
@@ -85,6 +89,11 @@ export default {
     grid-area: info;
   }
   .contact {
+    display: flex;
+    flex-direction: column;
+  }
+  .btns-contact {
+    flex: 1;
     grid-area: contact;
     display: flex;
     gap: 16px;
@@ -109,6 +118,20 @@ export default {
       &:hover {
         background-color: var(--c-tertiary);
       }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    #client-infos {
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    .box-contents {
+      grid-template-areas:
+        "info"
+        "contact";
     }
   }
 </style>

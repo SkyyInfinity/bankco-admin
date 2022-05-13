@@ -140,4 +140,35 @@ export default {
       background-color: var(--c-secondary-lighter);
     }
   }
+  @media screen and (max-width: 768px) {
+    .client-card {
+      flex-wrap: wrap;
+
+      .client-card-column {
+        flex: inherit;
+        width: 100%;
+        display: flex;
+
+        .client-card-header {
+          flex-direction: column;
+          justify-content: center;
+          flex: 1;
+        }
+        .client-card-content {
+          text-align: center;
+          flex: 1;
+
+          p {
+            word-break: break-word;
+          }
+
+          a {
+            margin: 0 auto;
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
 </style>
