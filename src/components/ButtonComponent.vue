@@ -1,12 +1,16 @@
 <template>
-  <button :disabled="disabled === true" :class="color === 'primary' ? 'button btn-primary' : color === 'secondary' ? 'button btn-secondary' : 'button btn-primary'" v-if="url === undefined"><slot/><i v-if="iconClass" :class="iconClass"></i></button>
-  <router-link :disabled="disabled === true" :class="color === 'primary' ? 'button btn-primary' : color === 'secondary' ? 'button btn-secondary' : 'button btn-primary'" v-else :to="url"><slot/><i v-if="iconClass" :class="iconClass"></i></router-link>
+  <button :class="color === 'primary' ? 'button btn-primary' : color === 'secondary' ? 'button btn-secondary' : 'button btn-primary'" v-if="url === undefined" :disabled="disabled === true"><slot/><i v-if="iconClass" :class="iconClass"></i></button>
+  <router-link
+      :class="color === 'primary' ? 'button btn-primary' : color === 'secondary' ? 'button btn-secondary' : 'button btn-primary'"
+      v-else :to="url"
+      :disabled="disabled === true"
+      ><slot/><i v-if="iconClass" :class="iconClass"></i></router-link>
 </template>
 
 <script>
 /**
  * @HowToUse
- * <ButtonComponent url="/" color="primary" icon-class="ri-arrow-right-line" :disabled="false">Example</ButtonComponent>
+ * <ButtonComponent url="/" color="primary" icon-class="ri-arrow-right-line" disabled>Example</ButtonComponent>
  */
 
 export default {
@@ -49,7 +53,7 @@ export default {
       color: var(--c-tertiary);
     }
     &.btn-secondary:hover {
-      background-color: var(--c-secondary-lighter);
+      background-color: var(--c-secondary-shade);
     }
     &[disabled=true] {
       background-color: #888;

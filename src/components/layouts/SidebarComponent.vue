@@ -9,7 +9,7 @@
     <div class="optional-links">
       <ul>
         <li class="logout-item">
-          <ButtonComponent title="Déconnexion" class="logout-btn" url="/" icon-class="ri-logout-circle-line" :disabled="false"><span class="nav-label">Déconnexion</span></ButtonComponent>
+          <ButtonComponent title="Déconnexion" class="logout-btn" url="/" icon-class="ri-logout-circle-line"><span class="nav-label">Déconnexion</span></ButtonComponent>
         </li>
         <li>
           <ButtonComponent @click="toggleMenu" class="icon-only menu-control" icon-class="ri-arrow-left-line"/>

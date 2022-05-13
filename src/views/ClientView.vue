@@ -8,8 +8,11 @@
             <FieldComponent type="text" name="nom" value="Doe"/>
             <FieldComponent type="text" name="prénom" value="John"/>
           </div>
-          <FieldComponent type="email" name="adresse e-mail" value="user@example.com"/>
-          <FieldComponent type="number" name="nombre de compte" value="3"/>
+          <FieldComponent type="date" name="birthdate" text="Date de naissance" :value="client.birthdate"/>
+          <FieldComponent type="email" name="email" text="Adresse e-mail" :value="client.email" disabled/>
+          <FieldComponent type="number" name="number-of-account" text="Nombre de compte" :value="client.numberOfAccount.toString()" disabled/>
+          <FieldComponent type="tel" name="phone" text="Numéro de téléphone" :value="client.phone"/>
+          <FieldComponent type="password" name="password" text="Mot de passe"/>
           <ButtonComponent iconClass="ri-edit-line">Modifier les informations</ButtonComponent>
         </form>
       </div>
@@ -38,6 +41,12 @@ export default {
         clientNumber: 12679976475,
         firstName: 'Emmanuel',
         lastName: 'Macron',
+        birthdate: '08/10/1984',
+        email: 'user@example.com',
+        phone: '0656994236',
+        address: '37 rue de la victoire',
+        city: 'Lille',
+        country: 'France',
         numberOfAccount: 2
       }
     }

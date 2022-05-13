@@ -15,7 +15,7 @@
         <label class="card-label">Numéro de client</label>
       </div>
       <div class="client-card-content">
-        <p class="card-value client-card-header__number"><mark title="Copier" @click="copyText">{{ client.clientNumber }}</mark></p>
+        <p class="card-value client-card-header__number"><mark title="Copier le texte" @click="copyText">{{ client.clientNumber }}</mark></p>
       </div>
     </div>
     <!--  Client name -->
@@ -109,10 +109,15 @@ export default {
     }
     mark {
       padding: 4px 16px;
-      background-color: rgba(var(--c-primary-rgb), 0.5);
+      background-color: var(--c-secondary);
       border-radius: 4px;
-      color: var(--c-text-alt);
+      color: var(--c-text-shade);
       cursor: pointer;
+      transition: var(--a-transition);
+
+      &:hover {
+        background-color: var(--c-secondary-shade);
+      }
     }
     p {
       color: var(--c-text-shade);

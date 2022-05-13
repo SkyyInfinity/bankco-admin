@@ -21,6 +21,7 @@
     --c-text: #fff;
     --c-text-shade: #cdcdcd;
     --c-text-alt: #000;
+    --c-placeholder: #818181;
 
     /* Animation */
     --a-duration: 200ms;
