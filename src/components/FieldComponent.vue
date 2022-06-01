@@ -4,8 +4,6 @@
 
     <input v-else-if="type === 'password'" :id="name ? name : 'input'" class="password-field" type="password" :value="value" :placeholder="text" :disabled="disabled === true">
 
-    <input v-else-if="type === 'tel'" :id="name ? name : 'input'" type="tel" :value="value" :placeholder="text" pattern="^[0-9]{10}$" size="10" :disabled="disabled === true">
-
     <input v-else :id="name ? name : 'input'" :type="type ? type : 'text'" :value="value" :placeholder="text" :disabled="disabled === true">
 
     <ButtonComponent @click="togglePasswordVisibility" class="show-password" v-if="type === 'password'" color="secondary" iconClass="ri-eye-line"/>
@@ -142,6 +140,34 @@ export default {
         background-color: transparent !important;
         color: var(--c-tertiary);
       }
+    }
+  }
+  .phone-field {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--c-placeholder);
+    transition: var(--a-transition);
+
+    &:hover,
+    &:focus-within {
+      label {
+        color: var(--c-text);
+      }
+    }
+    &:hover {
+      border-color: #9f9f9f;
+    }
+    label {
+      padding: 4px 8px;
+      display: block;
+      color: var(--c-placeholder);
+      border-radius: 4px;
+      background-color: #071A3A;
+      transition: var(--a-transition);
+    }
+    input {
+      padding-left: 4px;
+      border: 0;
     }
   }
 </style>

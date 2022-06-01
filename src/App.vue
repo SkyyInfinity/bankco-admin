@@ -1,10 +1,10 @@
 <template>
-  <HeaderComponent/>
-  <SidebarComponent/>
-  <main id="l-content">
+  <HeaderComponent v-if="this.$route.name !== 'login'"/>
+  <SidebarComponent v-if="this.$route.name !== 'login'"/>
+  <main :id="this.$route.name !== 'login' ? 'l-content' : 'l-content__fullwidth'">
     <router-view/>
   </main>
-  <FooterComponent/>
+  <FooterComponent v-if="this.$route.name !== 'login'"/>
 </template>
 
 <script>
@@ -48,6 +48,10 @@ export default {
     grid-area: content;
     padding: 32px;
     padding-top: calc(32px + var(--s-header));
+  }
+  #l-content__fullwidth {
+    grid-column: span 3;
+    grid-row: span 4;
   }
   a {
     display: block;

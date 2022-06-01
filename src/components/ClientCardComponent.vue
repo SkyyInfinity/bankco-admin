@@ -93,7 +93,8 @@ export default {
 
 <style lang="scss" scoped>
   .client-card {
-    border-radius: 8px;
+    border-bottom: 5px solid rgba(var(--c-primary-rgb), 0.6);
+    border-radius: 8px 8px 0 0;
     overflow: hidden;
     background-color: var(--c-secondary-shade);
     display: flex;
@@ -140,35 +141,22 @@ export default {
       background-color: var(--c-secondary-lighter);
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     .client-card {
-      flex-wrap: wrap;
+      flex-direction: column;
+    }
+    .client-card-column {
+      display: flex;
 
-      .client-card-column {
-        flex: inherit;
-        width: 100%;
-        display: flex;
-
-        .client-card-header {
-          flex-direction: column;
-          justify-content: center;
-          flex: 1;
-        }
-        .client-card-content {
-          text-align: center;
-          flex: 1;
-
-          p {
-            word-break: break-word;
-          }
-
-          a {
-            margin: 0 auto;
-            width: 100%;
-            justify-content: center;
-          }
-        }
+      .client-card-header,
+      .client-card-content {
+        flex: 1;
       }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .client-card-column {
+      flex-direction: column;
     }
   }
 </style>

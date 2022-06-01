@@ -6,16 +6,26 @@
           <h2>Bankco</h2>
         </router-link>
       </div>
-      <ul>
-        <li><router-link to="/profile"><i class="ri-user-line"></i></router-link></li>
+      <ul class="optional-links">
+        <li>
+          <ButtonComponent title="Profil" color="secondary" class="profile-btn" url="/profile" icon-class="ri-user-line"></ButtonComponent>
+        </li>
+        <li class="logout-item">
+          <ButtonComponent title="Déconnexion" color="secondary" class="logout-btn" url="/logout" icon-class="ri-logout-circle-line"></ButtonComponent>
+        </li>
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
+import ButtonComponent from "@/components/ButtonComponent";
+
 export default {
-  name: "HeaderComponent"
+  name: "HeaderComponent",
+  components: {
+    ButtonComponent
+  }
 }
 </script>
 
@@ -46,8 +56,12 @@ export default {
           color: #000 !important;
         }
       }
-      ul li a {
-        color: var(--c-text-alt);
+      ul.optional-links {
+        display: flex;
+        gap: 16px;
+
+        li {
+        }
       }
     }
   }

@@ -8,9 +8,6 @@
     </div>
     <div class="optional-links">
       <ul>
-        <li class="logout-item">
-          <ButtonComponent title="Déconnexion" class="logout-btn" url="/" icon-class="ri-logout-circle-line"><span class="nav-label">Déconnexion</span></ButtonComponent>
-        </li>
         <li>
           <ButtonComponent @click="toggleMenu" class="icon-only menu-control" icon-class="ri-arrow-left-line"/>
         </li>
@@ -144,26 +141,21 @@ export default {
         &.router-link-active {
           background-color: var(--c-background);
         }
+        i {
+          font-weight: normal;
+        }
       }
     }
     .optional-links {
       ul {
         display: flex;
-        flex-direction: row-reverse;
         gap: 8px;
 
         li {
-          &.logout-item {
-            flex: 1;
-          }
 
           .icon-only {
             border: none;
             height: 40px;
-          }
-          .logout-btn {
-            width: 100%;
-            justify-content: center;
           }
         }
       }

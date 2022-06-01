@@ -61,5 +61,8 @@ export default {
       pointer-events: none;
       cursor: not-allowed;
     }
+    i {
+      font-weight: normal;
+    }
   }
 </style>

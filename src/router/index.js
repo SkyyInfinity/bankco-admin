@@ -3,6 +3,8 @@ import HomeView from '@/views/HomeView.vue';
 import ProfileView from '@/views/ProfileView.vue';
 import ClientsView from '@/views/ClientsView.vue';
 import ClientView from '@/views/ClientView.vue';
+import LogoutView from "@/views/auth/LogoutView";
+import LoginView from "@/views/auth/LoginView";
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: '/clients/:id',
     name: 'client',
     component: ClientView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: LogoutView
   }
 ]
 
