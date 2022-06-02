@@ -1,13 +1,15 @@
 <template>
-  <HeaderComponent v-if="this.$route.name !== 'login'"/>
-  <SidebarComponent v-if="this.$route.name !== 'login'"/>
-  <main :id="this.$route.name !== 'login' ? 'l-content' : 'l-content__fullwidth'">
+  <HeaderComponent v-if="this.$route.name !== 'login' && this.$route.name !== 'notFound'"/>
+  <SidebarComponent v-if="this.$route.name !== 'login' && this.$route.name !== 'notFound'"/>
+  <main :id="(this.$route.name !== 'login' && this.$route.name !== 'notFound') ? 'l-content' : 'l-content__fullwidth'">
     <router-view/>
   </main>
-  <FooterComponent v-if="this.$route.name !== 'login'"/>
+  <FooterComponent v-if="this.$route.name !== 'login' && this.$route.name !== 'notFound'"/>
 </template>
 
 <script>
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import HeaderComponent from "@/components/layouts/HeaderComponent";
 import FooterComponent from "@/components/layouts/FooterComponent";
 import SidebarComponent from "@/components/layouts/SidebarComponent";
@@ -17,6 +19,12 @@ export default {
     HeaderComponent,
     FooterComponent,
     SidebarComponent
+  },
+  mounted() {
+    AOS.init({
+      duration: 650,
+      easing: 'ease-in-out'
+    });
   }
 }
 </script>
@@ -41,7 +49,7 @@ export default {
     grid-template-areas: "header header" "sidebar content" "sidebar footer";
 
     &.menu-is-opened {
-      --s-sidebar: 300px;
+      --s-sidebar: 237px;
     }
   }
   #l-content {

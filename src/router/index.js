@@ -5,6 +5,8 @@ import ClientsView from '@/views/ClientsView.vue';
 import ClientView from '@/views/ClientView.vue';
 import LogoutView from "@/views/auth/LogoutView";
 import LoginView from "@/views/auth/LoginView";
+import NotFoundView from "@/views/NotFoundView";
+import NotificationsView from "@/views/NotificationsView";
 
 const routes = [
   {
@@ -28,6 +30,11 @@ const routes = [
     component: ClientView
   },
   {
+    path: '/notifications',
+    name: 'notifications',
+    component: NotificationsView
+  },
+  {
     path: '/login',
     name: 'login',
     component: LoginView
@@ -36,6 +43,12 @@ const routes = [
     path: '/logout',
     name: 'logout',
     component: LogoutView
+  },
+  // Do not insert new route under route named NotFound
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+    component: NotFoundView
   }
 ]
 

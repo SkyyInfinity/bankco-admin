@@ -2,8 +2,9 @@
   <aside id="l-sidebar">
     <div class="menu-links">
       <ul>
-        <li><router-link to="/" title="Home"><i class="ri-home-4-line"></i><span class="nav-label">Home</span></router-link></li>
-        <li><router-link to="/clients" title="About"><i class="ri-user-settings-line"></i><span class="nav-label">Liste des clients</span></router-link></li>
+        <li><router-link to="/" title="Accueil"><i class="ri-home-4-line"></i><span class="nav-label">Accueil</span></router-link></li>
+        <li><router-link to="/clients" title="Liste des clients"><i class="ri-user-settings-line"></i><span class="nav-label">Liste des clients</span></router-link></li>
+        <li><router-link to="/notifications" title="Notifications"><i class="ri-notification-3-line"></i><span class="nav-label">Notifications</span></router-link></li>
       </ul>
     </div>
     <div class="optional-links">

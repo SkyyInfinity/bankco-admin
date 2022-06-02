@@ -52,7 +52,7 @@
           <label class="card-label">Action</label>
         </div>
         <div class="account-card-content">
-          <ButtonComponent :url="`?from_account=${account.number}`" color="secondary" title="Effectuer une transaction" iconClass="ri-arrow-left-right-line"/>
+          <ButtonComponent @click="openModal(account.id, account.number)" color="secondary" title="Effectuer une transaction" iconClass="ri-arrow-left-right-line"/>
         </div>
       </div>
     </div>
@@ -111,12 +111,15 @@ export default {
               el.target.innerText = TEXT;
             }, 1500);
           }
-
         })
         .catch(err => {
           console.log('Something went wrong', err);
         })
       }
+    },
+    openModal(id, accountNumber) {
+      console.log(id);
+      console.log(accountNumber);
     }
   }
 }

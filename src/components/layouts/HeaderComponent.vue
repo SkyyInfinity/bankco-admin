@@ -61,6 +61,14 @@ export default {
         gap: 16px;
 
         li {
+          a {
+            background: var(--c-tertiary);
+            color: var(--c-background);
+
+            &:hover {
+              background: var(--c-tertiary-shade);
+            }
+          }
         }
       }
     }

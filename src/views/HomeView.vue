@@ -1,7 +1,7 @@
 <template>
   <div class="page home-page">
     <h1>{{ welcomeText }} {{ user.firstName }},</h1>
-    <div class="box clients-list">
+    <div data-aos="fade-up" class="box clients-list">
       <h2>Nouveaux clients</h2>
       <div class="clients-cards">
         <div class="overlay"></div>

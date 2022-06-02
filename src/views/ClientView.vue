@@ -3,7 +3,7 @@
     <h1>Client n°{{ client.clientNumber }}</h1>
     <div class="box-contents">
       <!--  Informations  -->
-      <div class="box informations">
+      <div data-aos="fade-up" class="box informations">
         <h2>Informations</h2>
         <div class="info-list">
           <form id="client-infos" action="" method="post">
@@ -28,7 +28,7 @@
         </div>
       </div>
       <!--  Contact  -->
-      <div class="box contact">
+      <div data-aos="fade-up" class="box contact">
         <h2>Contact</h2>
         <div class="btns-contact">
           <a :href="`tel:+33${client.phone.slice(1)}`" class="tel btn-contact" >Appeler <i class="ri-phone-line"></i></a>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <!--  Accounts  -->
-      <div class="box accounts">
+      <div data-aos="fade-up" class="box accounts">
         <h2>Liste des comptes</h2>
         <div class="accounts-list">
           <AccountListComponent />

@@ -1,7 +1,7 @@
 <template>
   <div class="page about-page">
     <h1>Liste des clients</h1>
-    <div class="box clients-list">
+    <div data-aos="fade-up" class="box clients-list">
       <div class="clients-cards">
         <ClientCardComponent v-for="client in clients" :key="client.id" :client="client" />
       </div>

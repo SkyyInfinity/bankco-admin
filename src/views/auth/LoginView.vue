@@ -2,11 +2,12 @@
   <div class="page login-page">
     <div class="login-block login-left">
       <div class="l-constrained">
-        <h1>Accéder à mon espace</h1>
+        <h1 data-aos="fade-left">Accéder à mon espace</h1>
         <form action="" id="login-form">
-          <FieldComponent type="email" name="email" text="Adresse e-mail" />
-          <FieldComponent type="password" name="password" text="Mot de passe" />
-          <ButtonComponent title="Se connecter" color="primary" class="login-submit" icon-class="ri-arrow-right-line">Se connecter</ButtonComponent>
+          <FieldComponent data-aos="fade-left" data-aos-delay="150" type="email" name="email" text="Adresse e-mail" />
+          <FieldComponent data-aos="fade-left" data-aos-delay="300" type="password" name="password" text="Mot de passe" />
+          <router-link data-aos="fade-left" data-aos-delay="450" class="forgot-password" to="/login">Mot de passe oublié ?</router-link>
+          <ButtonComponent data-aos="fade-left" data-aos-delay="600" title="Se connecter" color="primary" class="login-submit" icon-class="ri-arrow-right-line">Se connecter</ButtonComponent>
         </form>
       </div>
     </div>
@@ -67,6 +68,14 @@ export default {
        display: flex;
        flex-direction: column;
        gap: 32px;
+
+       .forgot-password {
+         color: var(--c-tertiary);
+
+         &:hover {
+           text-decoration: underline;
+         }
+       }
      }
    }
    .login-right {
