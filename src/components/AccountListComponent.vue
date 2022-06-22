@@ -57,8 +57,8 @@
       </div>
     </div>
     <ModalComponent v-if="showModal" :closeModal="closeModal" title="Effectuer une transaction">
-      <p>{{ this.modalData.id }}</p>
-      <p>{{ this.modalData.accountNumber }}</p>
+<!--      <p>{{ this.modalData.id }}</p>-->
+<!--      <p>{{ this.modalData.accountNumber }}</p>-->
       <form class="transaction-form" action="">
         <div class="field-groups">
           <p>Depuis</p>
@@ -68,6 +68,11 @@
           <p>Vers</p>
           <SelectComponent :options="selectOptions" />
         </div>
+        <div class="field-groups">
+          <p>Montant</p>
+          <FieldComponent type="number" name="amount" value=""/>
+        </div>
+        <ButtonComponent title="Confirmer la transaction" color="primary" class="transaction-submit" icon-class="ri-arrow-left-right-line">Confirmer la transaction</ButtonComponent>
       </form>
     </ModalComponent>
   </div>
@@ -77,13 +82,15 @@
 import ButtonComponent from "@/components/ButtonComponent";
 import ModalComponent from '@/components/ModalComponent';
 import SelectComponent from '@/components/form/SelectComponent';
+import FieldComponent from "@/components/form/FieldComponent";
 
 export default {
   name: "AccountListComponent",
   components: {
     ButtonComponent,
     ModalComponent,
-    SelectComponent
+    SelectComponent,
+    FieldComponent
   },
   data() {
     return {
@@ -168,11 +175,18 @@ export default {
   .transaction-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 16px;
 
     .field-groups {
       width: 100%;
+      align-items: flex-end;
+
+      p {
+        flex: 0.2;
+      }
+    }
+    .transaction-submit {
+      margin-top: 16px;
     }
   }
   .account-card {

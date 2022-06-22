@@ -3,7 +3,7 @@
     <div class="login-block login-left">
       <div class="l-constrained">
         <h1 data-aos="fade-left">Accéder à mon espace</h1>
-        <form action="" id="login-form">
+        <form @submit="submit" action="" id="login-form">
           <FieldComponent data-aos="fade-left" data-aos-delay="150" type="email" name="email" text="Adresse e-mail" />
           <FieldComponent data-aos="fade-left" data-aos-delay="300" type="password" name="password" text="Mot de passe" />
           <router-link data-aos="fade-left" data-aos-delay="450" class="forgot-password" to="/login">Mot de passe oublié ?</router-link>
@@ -23,12 +23,29 @@
 <script>
 import FieldComponent from "@/components/form/FieldComponent";
 import ButtonComponent from "@/components/ButtonComponent";
+import axios from 'axios';
 
 export default {
   name: "LoginView",
   components: {
     FieldComponent,
     ButtonComponent
+  },
+  methods: {
+    submit(e) {
+      e.preventDefault();
+
+      axios.post('http://localhost:8080/signin', {}, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Credentials': 'true'
+        }
+      }).then((res) => {
+        console.log(res);
+      })
+      // console.log(e.target.password.value);
+    }
   }
 }
 </script>

@@ -58,12 +58,13 @@ export default {
 
       .modal-title {
         position: relative;
-        padding: 16px;
+        padding: 16px 32px;
         background-color: var(--c-primary);
 
         h2 {
           margin: 0 !important;
           color: var(--c-secondary) !important;
+          line-height: 1;
         }
         .modal-close {
           position: absolute;
@@ -90,7 +91,8 @@ export default {
         }
       }
       .modal-content {
-        padding: 16px;
+        padding: 16px 32px;
+        padding-bottom: 32px;
       }
     }
   }
