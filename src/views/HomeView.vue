@@ -9,18 +9,24 @@
       </div>
       <ButtonComponent class="view-all" url="/clients">Voir tous les clients</ButtonComponent>
     </div>
+    <div class="box mailbox">
+      <h2>Boite mail</h2>
+      <MessageListComponent />
+    </div>
   </div>
 </template>
 
 <script>
 import ClientCardComponent from "@/components/ClientCardComponent";
 import ButtonComponent from "@/components/ButtonComponent";
+import MessageListComponent from "@/components/MessageListComponent";
 
 export default {
   name: 'HomeView',
   components: {
     ClientCardComponent,
-    ButtonComponent
+    ButtonComponent,
+    MessageListComponent
   },
   data() {
     return {

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import FieldComponent from "@/components/FieldComponent";
+import FieldComponent from "@/components/form/FieldComponent";
 import ButtonComponent from "@/components/ButtonComponent";
 
 export default {

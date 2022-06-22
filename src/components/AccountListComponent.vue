@@ -56,16 +56,34 @@
         </div>
       </div>
     </div>
+    <ModalComponent v-if="showModal" :closeModal="closeModal" title="Effectuer une transaction">
+      <p>{{ this.modalData.id }}</p>
+      <p>{{ this.modalData.accountNumber }}</p>
+      <form class="transaction-form" action="">
+        <div class="field-groups">
+          <p>Depuis</p>
+          <SelectComponent :options="selectOptions" />
+        </div>
+        <div class="field-groups">
+          <p>Vers</p>
+          <SelectComponent :options="selectOptions" />
+        </div>
+      </form>
+    </ModalComponent>
   </div>
 </template>
 
 <script>
 import ButtonComponent from "@/components/ButtonComponent";
+import ModalComponent from '@/components/ModalComponent';
+import SelectComponent from '@/components/form/SelectComponent';
 
 export default {
   name: "AccountListComponent",
   components: {
-    ButtonComponent
+    ButtonComponent,
+    ModalComponent,
+    SelectComponent
   },
   data() {
     return {
@@ -87,6 +105,14 @@ export default {
           balance: 300,
           autorizedDebt: 0,
           createdAt: '13/01/06'
+        }
+      ],
+      showModal: false,
+      modalData: {},
+      selectOptions: [
+        {
+          label: '',
+          value: ''
         }
       ]
     }
@@ -118,8 +144,16 @@ export default {
       }
     },
     openModal(id, accountNumber) {
-      console.log(id);
-      console.log(accountNumber);
+      this.showModal = true;
+
+      this.modalData.id = id;
+      this.selectOptions.value = id;
+
+      this.modalData.accountNumber = accountNumber;
+      this.selectOptions.label = accountNumber;
+    },
+    closeModal() {
+      this.showModal = false;
     }
   }
 }
@@ -130,6 +164,16 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+  .transaction-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    .field-groups {
+      width: 100%;
+    }
   }
   .account-card {
     border-bottom: 5px solid rgba(var(--c-primary-rgb), 0.6);
