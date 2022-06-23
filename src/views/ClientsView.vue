@@ -11,6 +11,7 @@
 
 <script>
 import ClientCardComponent from "@/components/ClientCardComponent";
+import AuthService from "@/services/AuthService";
 
 export default {
   name: 'ClientsView',
@@ -69,6 +70,11 @@ export default {
           numberOfAccount: 2
         }
       ]
+    }
+  },
+  beforeMount() {
+    if(!AuthService.isLoggedIn()) {
+      this.$router.push('/login');
     }
   }
 }

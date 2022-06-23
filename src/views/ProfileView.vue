@@ -6,9 +6,16 @@
 
 <script>
 
+import AuthService from "@/services/AuthService";
+
 export default {
   name: 'ProfileView',
-  components: {}
+  components: {},
+  beforeMount() {
+    if(!AuthService.isLoggedIn()) {
+      this.$router.push('/login');
+    }
+  },
 }
 </script>
 

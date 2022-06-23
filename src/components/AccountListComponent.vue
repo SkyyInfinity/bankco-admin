@@ -62,11 +62,11 @@
       <form class="transaction-form" action="">
         <div class="field-groups">
           <p>Depuis</p>
-          <SelectComponent :options="selectOptions" />
+          <SelectComponent id="from-select" :options="selectOptions" />
         </div>
         <div class="field-groups">
           <p>Vers</p>
-          <SelectComponent :options="selectOptions" />
+          <SelectComponent id="to-select" :options="selectOptions" />
         </div>
         <div class="field-groups">
           <p>Montant</p>
@@ -118,8 +118,8 @@ export default {
       modalData: {},
       selectOptions: [
         {
-          label: '',
-          value: ''
+          label: String,
+          value: Number
         }
       ]
     }

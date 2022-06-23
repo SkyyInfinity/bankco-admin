@@ -50,6 +50,7 @@
 import FieldComponent from '@/components/form/FieldComponent';
 import ButtonComponent from '@/components/ButtonComponent';
 import AccountListComponent from "@/components/AccountListComponent";
+import AuthService from "@/services/AuthService";
 
 export default {
   name: "ClientView",
@@ -74,6 +75,11 @@ export default {
         country: 'France', // ok
         numberOfAccount: 2
       }
+    }
+  },
+  beforeMount() {
+    if(!AuthService.isLoggedIn()) {
+      this.$router.push('/login');
     }
   },
   mounted() {

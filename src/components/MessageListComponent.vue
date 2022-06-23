@@ -1,24 +1,26 @@
 <template>
   <div class="mailbox-list">
-    <div @click="toggleMessage" v-for="message in messages" :key="message.id" :data-id="message.id" class="mailbox-item">
-      <i class="toggle-button ri-arrow-drop-down-line"></i>
+    <div v-for="message in messages" :key="message.id" class="mailbox-item">
+      <ButtonComponent class="toggle-button" @click="toggleMessage" color="secondary" title="Voir le message" iconClass="ri-arrow-down-s-line"/>
       <div class="mailbox-header__top">
         <p class="from">De : <span>{{ message.from }}</span></p>
         <p class="subject">Sujet : <span>{{ message.subject }}</span></p>
       </div>
       <div class="mailbox-header__bottom">
         <p class="to">Pour : <span>{{ message.to }}</span></p>
-        <p>Message : <span v-html="message.content"></span></p>
+        <p class="message">Message : <span v-html="message.content"></span></p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ButtonComponent from '@/components/ButtonComponent';
+
 export default {
   name: "MessageListComponent",
   components: {
-
+    ButtonComponent
   },
   data() {
     return {
@@ -49,37 +51,78 @@ export default {
   },
   methods: {
     toggleMessage(e) {
-      const ID = e.target.dataset.id;
-      e.target.classList.toggle('is-visible');
-
-      console.log(ID);
+      if(!e.target.classList.contains('ri-arrow-down-s-line')) {
+        e.target.parentElement.classList.toggle('is-visible');
+      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .toggle-button {
+    position: absolute;
+    right: 16px;
+    top: 21px;
+
+    i {
+      pointer-events: none !important;
+    }
+  }
   .mailbox-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     .mailbox-item {
+      padding: 8px 16px;
       position: relative;
-      .toggle-button {
-        position: absolute;
-        right: 8px;
-        top: 8px;
-        cursor: pointer;
-        padding: 8px;
-      }
+      background-color: var(--c-secondary-lighter);
+      border-radius: 8px;
+
       .mailbox-header__top {
         padding: 8px;
+
+        p {
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: bold;
+
+          span {
+            font-size: 14px;
+            text-transform: none;
+            font-weight: normal;
+          }
+        }
       }
       .mailbox-header__bottom {
         display: none;
+        padding: 16px 32px;
+        border-radius: 8px;
+        background-color: var(--c-secondary);
 
-        &.is-visible {
+        p {
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: bold;
+
+          span {
+            font-size: 14px;
+            text-transform: none;
+            font-weight: normal;
+          }
+          &.message {
+            span {
+              display: block;
+              line-height: 1.5;
+              margin-top: 8px;
+              font-family: Consolas, sans-serif;
+            }
+          }
+        }
+      }
+      &.is-visible {
+        .mailbox-header__bottom {
           display: block;
         }
       }

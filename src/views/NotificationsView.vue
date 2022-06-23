@@ -9,6 +9,7 @@
 
 <script>
 import NotificationComponent from "@/components/NotificationComponent";
+import AuthService from "@/services/AuthService";
 
 export default {
   name: "NotificationsView",
@@ -45,6 +46,11 @@ export default {
           createdAt: new Date('July 04, 2022 11:52:08')
         }
       ]
+    }
+  },
+  beforeMount() {
+    if(!AuthService.isLoggedIn()) {
+      this.$router.push('/login');
     }
   }
 }

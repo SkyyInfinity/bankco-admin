@@ -1,17 +1,19 @@
 <template>
   <div class="page home-page">
     <h1>{{ welcomeText }} {{ user.firstName }},</h1>
-    <div data-aos="fade-up" class="box clients-list">
-      <h2>Nouveaux clients</h2>
-      <div class="clients-cards">
-        <div class="overlay"></div>
-        <ClientCardComponent v-for="client in clients" :key="client.id" :client="client" />
+    <div class="box-contents">
+      <div data-aos="fade-up" class="box clients-list">
+        <h2>Nouveaux clients</h2>
+        <div class="clients-cards">
+          <div class="overlay"></div>
+          <ClientCardComponent v-for="client in clients" :key="client.id" :client="client" />
+        </div>
+        <ButtonComponent class="view-all" url="/clients">Voir tous les clients</ButtonComponent>
       </div>
-      <ButtonComponent class="view-all" url="/clients">Voir tous les clients</ButtonComponent>
-    </div>
-    <div class="box mailbox">
-      <h2>Boite mail</h2>
-      <MessageListComponent />
+      <div data-aos="fade-up" class="box mailbox">
+        <h2>Boite mail</h2>
+        <MessageListComponent />
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +22,8 @@
 import ClientCardComponent from "@/components/ClientCardComponent";
 import ButtonComponent from "@/components/ButtonComponent";
 import MessageListComponent from "@/components/MessageListComponent";
+import axios from "axios";
+import AuthService from "@/services/AuthService";
 
 export default {
   name: 'HomeView',
@@ -28,6 +32,19 @@ export default {
     ButtonComponent,
     MessageListComponent
   },
+  beforeMount() {
+    if(!AuthService.isLoggedIn()) {
+      this.$router.push('/login');
+    }
+  },
+  created() {
+    axios.get(process.env.API_URL + 'auth/banker/customers').then((res) => {
+      this.clients = res.data;
+      console.log(this.clients);
+    }).catch((err) => {
+      console.log(err);
+    });
+  },
   data() {
     return {
       welcomeText: 'Bonjour',
@@ -35,32 +52,7 @@ export default {
         firstName: 'John',
         lastName: 'Doe'
       },
-      clients: [
-        {
-          id: 1,
-          title: 'Mr',
-          clientNumber: 10551486994,
-          firstName: 'Tony',
-          lastName: 'Stark',
-          numberOfAccount: 2
-        },
-        {
-          id: 2,
-          title: 'Mme',
-          clientNumber: 32412245785,
-          firstName: 'Natasha',
-          lastName: 'Roumanoff',
-          numberOfAccount: 1
-        },
-        {
-          id: 3,
-          title: 'Mr',
-          clientNumber: 53475444517,
-          firstName: 'Bruce',
-          lastName: 'Banner',
-          numberOfAccount: 3
-        }
-      ]
+      clients: []
     }
   },
   mounted() {
@@ -82,26 +74,43 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .clients-cards {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  .home-page {
+    .box-contents {
+      display: grid;
+      grid-template-areas: "clients" "mailbox";
+      grid-template-columns: 1fr;
+      gap: 32px;
 
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 60%;
-      pointer-events: none;
-      bottom: 0;
-      left: 0;
-      z-index: 15;
-      background-image: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+      .clients-list {
+        grid-area: clients;
+
+        .clients-cards {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          .overlay {
+            position: absolute;
+            width: 100%;
+            height: 60%;
+            pointer-events: none;
+            bottom: 0;
+            left: 0;
+            z-index: 15;
+            background-image: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+          }
+        }
+        .view-all {
+          width: 100%;
+          justify-content: center;
+          margin-top: 16px;
+        }
+      }
+      .mailbox {
+        grid-area: mailbox;
+      }
     }
   }
-  .view-all {
-    width: 100%;
-    justify-content: center;
-    margin-top: 16px;
-  }
+
 </style>

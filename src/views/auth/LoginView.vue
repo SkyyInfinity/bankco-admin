@@ -4,6 +4,7 @@
       <div class="l-constrained">
         <h1 data-aos="fade-left">Accéder à mon espace</h1>
         <form @submit="submit" action="" id="login-form">
+          <p v-if="error !== ''">{{ error }}</p>
           <FieldComponent data-aos="fade-left" data-aos-delay="150" type="email" name="email" text="Adresse e-mail" />
           <FieldComponent data-aos="fade-left" data-aos-delay="300" type="password" name="password" text="Mot de passe" />
           <router-link data-aos="fade-left" data-aos-delay="450" class="forgot-password" to="/login">Mot de passe oublié ?</router-link>
@@ -24,6 +25,8 @@
 import FieldComponent from "@/components/form/FieldComponent";
 import ButtonComponent from "@/components/ButtonComponent";
 import axios from 'axios';
+import CookieService from "@/services/CookieService";
+import AuthService from "@/services/AuthService";
 
 export default {
   name: "LoginView",
@@ -31,20 +34,43 @@ export default {
     FieldComponent,
     ButtonComponent
   },
+  data() {
+    return {
+      error: ''
+    }
+  },
+  beforeMount() {
+    if(AuthService.isLoggedIn()) {
+      this.$router.push('/');
+    }
+  },
   methods: {
     submit(e) {
       e.preventDefault();
 
-      axios.post('http://localhost:8080/signin', {}, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': '*',
-          'Access-Control-Allow-Credentials': 'true'
-        }
-      }).then((res) => {
-        console.log(res);
+      let email = e.target.email.value;
+      let password = e.target.password.value;
+
+      axios.post('http://localhost:8080/signin', {
+        email: email,
+        pass: password
       })
-      // console.log(e.target.password.value);
+      .then((res) => {
+
+        if(res.data.success) {
+          // select user
+          // create cookie
+          CookieService.setCookie('token', res.data.token);
+          //Y'a pas d'erreurs, l'utilisateur est rediriger vers le dashboard
+          if(CookieService.getCookie('token') !== undefined) {
+            this.$router.push('/');
+          }
+        } else {
+          this.error = 'Ce compte n\'éxiste pas.';
+        }
+      }).catch((err) => {
+        console.log('error : ', err);
+      })
     }
   }
 }

@@ -1,23 +1,19 @@
 <template>
-  <div class="page logout-page">
-
-  </div>
+  <div class="page logout-page"></div>
 </template>
 
 <script>
+import AuthService from "@/services/AuthService";
+import CookieService from "@/services/CookieService";
+
 export default {
   name: "LogoutView",
-  created() {
-    if(this.userExist()) {
-      //TODO Disconnect from current user
-      console.log('User exist');
-      // Redirect to login ?
+  beforeMount() {
+    if(AuthService.isLoggedIn()) {
+      // Delete cookie's value
+      CookieService.deleteCookie('token');
+      // Redirect to login page
       this.$router.push('/login');
-    }
-  },
-  methods: {
-    userExist() {
-      return true;
     }
   }
 }

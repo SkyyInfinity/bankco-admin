@@ -23,7 +23,8 @@ export default {
   mounted() {
     AOS.init({
       duration: 650,
-      easing: 'ease-in-out'
+      easing: 'ease-in-out',
+      once: true
     });
   }
 }
