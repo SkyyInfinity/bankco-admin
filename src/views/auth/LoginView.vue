@@ -4,7 +4,9 @@
       <div class="l-constrained">
         <h1 data-aos="fade-left">Accéder à mon espace</h1>
         <form @submit="submit" action="" id="login-form">
-          <p v-if="error !== ''">{{ error }}</p>
+          <NoticeComponent v-if="error !== ''" mode="error">
+            {{ error }}
+          </NoticeComponent>
           <FieldComponent data-aos="fade-left" data-aos-delay="150" type="email" name="email" text="Adresse e-mail" />
           <FieldComponent data-aos="fade-left" data-aos-delay="300" type="password" name="password" text="Mot de passe" />
           <router-link data-aos="fade-left" data-aos-delay="450" class="forgot-password" to="/login">Mot de passe oublié ?</router-link>
@@ -27,12 +29,14 @@ import ButtonComponent from "@/components/ButtonComponent";
 import axios from 'axios';
 import CookieService from "@/services/CookieService";
 import AuthService from "@/services/AuthService";
+import NoticeComponent from "@/components/form/NoticeComponent";
 
 export default {
   name: "LoginView",
   components: {
     FieldComponent,
-    ButtonComponent
+    ButtonComponent,
+    NoticeComponent
   },
   data() {
     return {

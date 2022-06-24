@@ -3,7 +3,7 @@
     <nav>
       <div class="logo">
         <router-link to="/">
-          <h2>Bankco</h2>
+          <img src="@/assets/img/bankco-logo-black.svg" alt="logo du site">
         </router-link>
       </div>
       <ul class="optional-links">
@@ -54,6 +54,9 @@ export default {
         h2 {
           margin: 0 !important;
           color: #000 !important;
+        }
+        img {
+          width: 150px;
         }
       }
       ul.optional-links {

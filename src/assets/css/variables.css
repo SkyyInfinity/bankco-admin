@@ -25,6 +25,9 @@
     --c-error: #ff3333;
     --c-error-rgb: 255, 51, 51;
     --c-error-shade: hsl(0, 100%, 50%);
+    --c-info: #646FD4;
+    --c-info-rgb: 100, 111, 212;
+    --c-info-shade: hsl(234, 57%, 50%);
     --c-success: #68df4b;
     --c-success-rgb: 104, 223, 75;
     --c-success-shade: hsl(108, 70%, 48%);
